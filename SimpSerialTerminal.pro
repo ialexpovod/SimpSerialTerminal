@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -34,4 +34,5 @@ FORMS += \
         forms/mainwindow.ui
 
 DISTFILES += \
-    README.md
+    README.md \
+    CMakeLists.txt
