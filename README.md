@@ -1,4 +1,4 @@
-# SimpSerialTerminal 
+# Simple Serial Port Terminal on Qt (C++)
 
 <a href="#">
     <img width="100px" height="100px" src="img/micico.png" align="right" />
