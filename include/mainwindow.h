@@ -20,6 +20,25 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+/*-----------------Init SerialPort-----------------*/
+// Qt Serial Port provides the basic functionality, which
+// includes configuring, I/O operations, getting and setting
+// the control signals of the RS-232 pinouts.
+#include <QtSerialPort>
+#include <QtSerialPortVersion>
+#include <QSerialPort>
+#include <QSerialPortInfo>
+
+
+#include <QDebug>
+#include <QByteArray>
+#include <QLabel>
+#include <QTimer> // provides repetitive and single-shot timers
+#include <QThread> //  platform-independent way to manage threads.
+
+#include <string>
+
+enum ASCII_HEX {ASCII, HEX,};
 
 namespace Ui {
 class MainWindow;
@@ -33,8 +52,39 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    void InitialSerialPortInfo();
+
+
+private slots:
+    void Write();
+
+    void on_rBtnASCIISend_clicked();
+    void on_rBtnHEXSend_clicked();
+
+
+    void on_btnSend_clicked();
+
+    void on_btnClearSend_clicked();
+
+    void on_btnClearReceive_clicked();
+
+    void on_btnOpen_clicked();
+
 private:
     Ui::MainWindow *ui;
+
+    bool ASCII_HEXControl;
+
+    QSerialPortInfo portInfo;
+    QSerialPort port;
+
+
+    QTimer time;
+
+    QLabel StatusConnect;
+    QLabel ConnectSeriaPortInfo;
+
+    bool Open;
 };
 
 #endif // MAINWINDOW_H
